@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQI Forecast</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Aqi</div>
+        <nav>
+            <a href="">Home</a>
+            <a href="">Map</a>
+            <a href="">Index</a>
+            <a href="">Solution</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859424.7113893665!2d75.3803107013578!3d19.152814743522477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1738338519989!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+    <div class="dashboard">
+        <div class="header">
+            <div>
+                <div class="location">
+                    <a href="#">Mumbai, Maharashtra, India</a>
+                </div>
+                <div class="last-updated">Last Updated: 8 minutes ago</div>
+            </div>
+            <button id="locateBtn" style="padding: 8px 16px; background: #3498db; border: none; border-radius: 5px; color: white; cursor: pointer;">
+                Locate me
+            </button>
+        </div>
+    
+        <div class="main-content">
+            <div class="aqi-section">
+                <div class="aqi-label">Live AQI</div>
+                <div class="live-aqi" id="aqiValue">142</div>
+                <div class="aqi-status" id="aqiStatus">Poor</div>
+                
+                <div class="pm-values">
+                    PM10: 155 µg/m³ &nbsp;&nbsp;&nbsp; PM2.5: 59 µg/m³
+                </div>
+                
+                <div class="aqi-scale">
+                    <div class="aqi-marker" id="aqiMarker"></div>
+                </div>
+                <div class="scale-labels">
+                    <span>0</span>
+                    <span>50</span>
+                    <span>100</span>
+                    <span>150</span>
+                    <span>200</span>
+                    <span>250</span>
+                    <span>300+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!------------------card---------------->
+
+    <div class="container">
+        <div class="card__container">
+            <article class="card__article">
+                <img src="pm2_5.jpg" alt="image" class="card__img">
+                <div class="card__data">
+                    <span class="card__description"></span>
+                    <h3 class="card__title">Particulate Matter (PM2.5)</h3>
+                </div>
+            </article>
+            <article class="card__article">
+                <img src="pm10.png" alt="image" class="card__img">
+                <div class="card__data">
+                    <span class="card__description"></span>
+                    <h3 class="card__title">Particulate Matter (PM10)</h3>
+                </div>
+            </article>
+            <article class="card__article">
+                <img src="co.png" alt="image" class="card__img">
+                <div class="card__data">
+                    <span class="card__description"></span>
+                    <h3 class="card__title">Carbon Monoxide</h3>
+                </div>
+            </article>
+            <article class="card__article">
+                <img src="so2.png" alt="image" class="card__img">
+                <div class="card__data">
+                    <span class="card__description"></span>
+                    <h3 class="card__title">Sulphur Dioxide</h3>
+                </div>
+            </article>
+            <article class="card__article">
+                <img src="no2.jpg" alt="image" class="card__img">
+                <div class="card__data">
+                    <span class="card__description"></span>
+                    <h3 class="card__title">Nitrogen Dioxide</h3>
+                </div>
+            </article>
+            <article class="card__article">
+                <img src="ozone.png" alt="image" class="card__img">
+                <div class="card__data">
+                    <span class="card__description"></span>
+                    <h3 class="card__title">Ozone</h3>
+                </div>
+            </article>
+        </div>
+    </div>
+    
+
+    
+    <script src="app.js"></script>  
