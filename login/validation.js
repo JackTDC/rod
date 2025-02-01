@@ -53,7 +53,7 @@ form.addEventListener("submit", async (event) => {
     // Login logic
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "signup.html"; // Redirect to dashboard after successful login
+      window.location.href = "pref.html"; // Redirect to dashboard after successful login
     } catch (error) {
       document.getElementById("error-message").innerText = error.message;
     }

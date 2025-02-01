@@ -1,116 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AQI Forecast</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <div class="logo">Aqi</div>
-        <nav>
-            <a href="">Home</a>
-            <a href="">Map</a>
-            <a href="">Index</a>
-            <a href="">Solution</a>
-        </nav>
+      <div class="logo">AQI</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Map</a>
+        <a href="#">Index</a>
+        <a href="#">Solution</a>
+      </nav>
     </header>
 
     <div class="dashboard-container">
-        <div id="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859424.7113893665!2d75.3803107013578!3d19.152814743522477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1738338519989!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+      <div id="map">
+        <!-- You can replace this map with your desired map -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859424.7113893665!2d75.3803107013578!3d19.152814743522477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1738338519989!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
 
-    <div class="dashboard">
+      <div class="dashboard">
         <div class="header">
-            <div>
-                <div class="location">
-                    <a href="#">Mumbai, Maharashtra, India</a>
-                </div>
-                <div class="last-updated">Last Updated: 8 minutes ago</div>
+          <div>
+            <div class="location">
+              <a href="#">Mumbai, Maharashtra, India</a>
             </div>
-            <button id="locateBtn" style="padding: 8px 16px; background: #3498db; border: none; border-radius: 5px; color: white; cursor: pointer;">
-                Locate me
-            </button>
+            <div class="last-updated">Last Updated: 8 minutes ago</div>
+          </div>
+          <button id="locateBtn">Locate me</button>
         </div>
-    
+
         <div class="main-content">
-            <div class="aqi-section">
-                <div class="aqi-label">Live AQI</div>
-                <div class="live-aqi" id="aqiValue">142</div>
-                <div class="aqi-status" id="aqiStatus">Poor</div>
-                
-                <div class="pm-values">
-                    PM10: 155 µg/m³ &nbsp;&nbsp;&nbsp; PM2.5: 59 µg/m³
-                </div>
-                
-                <div class="aqi-scale">
-                    <div class="aqi-marker" id="aqiMarker"></div>
-                </div>
-                <div class="scale-labels">
-                    <span>0</span>
-                    <span>50</span>
-                    <span>100</span>
-                    <span>150</span>
-                    <span>200</span>
-                    <span>250</span>
-                    <span>300+</span>
-                </div>
+          <div class="aqi-section">
+            <div class="aqi-label">Live AQI</div>
+            <div class="live-aqi" id="aqiValue">142</div>
+            <div class="aqi-status" id="aqiStatus">Poor</div>
+            <div class="pm-values">
+              PM10: 155 µg/m³ &nbsp;&nbsp;&nbsp; PM2.5: 59 µg/m³
             </div>
+            <div class="aqi-scale">
+              <div class="aqi-marker" id="aqiMarker"></div>
+            </div>
+            <div class="scale-labels">
+              <span>0</span>
+              <span>50</span>
+              <span>100</span>
+              <span>150</span>
+              <span>200</span>
+              <span>250</span>
+              <span>300+</span>
+            </div>
+          </div>
         </div>
-    </div>
-    
-    <!------------------card---------------->
+      </div>
 
-    <div class="container">
-        <div class="card__container">
-            <article class="card__article">
-                <img src="pm2_5.jpg" alt="image" class="card__img">
-                <div class="card__data">
-                    <span class="card__description"></span>
-                    <h3 class="card__title">Particulate Matter (PM2.5)</h3>
-                </div>
-            </article>
-            <article class="card__article">
-                <img src="pm10.png" alt="image" class="card__img">
-                <div class="card__data">
-                    <span class="card__description"></span>
-                    <h3 class="card__title">Particulate Matter (PM10)</h3>
-                </div>
-            </article>
-            <article class="card__article">
-                <img src="co.png" alt="image" class="card__img">
-                <div class="card__data">
-                    <span class="card__description"></span>
-                    <h3 class="card__title">Carbon Monoxide</h3>
-                </div>
-            </article>
-            <article class="card__article">
-                <img src="so2.png" alt="image" class="card__img">
-                <div class="card__data">
-                    <span class="card__description"></span>
-                    <h3 class="card__title">Sulphur Dioxide</h3>
-                </div>
-            </article>
-            <article class="card__article">
-                <img src="no2.jpg" alt="image" class="card__img">
-                <div class="card__data">
-                    <span class="card__description"></span>
-                    <h3 class="card__title">Nitrogen Dioxide</h3>
-                </div>
-            </article>
-            <article class="card__article">
-                <img src="ozone.png" alt="image" class="card__img">
-                <div class="card__data">
-                    <span class="card__description"></span>
-                    <h3 class="card__title">Ozone</h3>
-                </div>
-            </article>
+      <h2 class="graph-heading">Graphical Representation</h2>
+      <div class="graph-container">
+        <h2>AQI Graph</h2>
+        <div class="subtitle">Historical Air Quality Data</div>
+        <div class="location">Mumbai</div>
+
+        <div class="controls">
+          <div class="graph-buttons">
+            <button class="active" onclick="toggleChart('bar')">
+              Bar Graph
+            </button>
+            <button onclick="toggleChart('line')">Line Graph</button>
+          </div>
+          <div class="dropdowns">
+            <select id="timeRange">
+              <option>24 Hours</option>
+              <option>7 Days</option>
+              <option>30 Days</option>
+            </select>
+            <select id="metric">
+              <option>AQI</option>
+              <option>PM2.5</option>
+              <option>PM10</option>
+            </select>
+          </div>
         </div>
-    </div>
-    
 
-    
-    <script src="app.js"></script>  
+        <div class="chart-container">
+          <canvas id="barChart"></canvas>
+          <canvas id="lineChart" style="display: none"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <section class="hero-section"></section>
+    <h2 class="card-heading">Major Pollutants</h2>
+    <div class="card-grid">
+      <a class="card" href="#">
+        <div class="card__background" style="background-image: url(https://static.vecteezy.com/system/resources/previews/016/763/998/non_2x/sample-text-button-sample-sign-icon-label-sticker-web-buttons-vector.jpg)"></div>
+        <div class="card__content">
+          <p class="card__category">Particulate Matter</p>
+          <h3 class="card__heading">PM(2.5)</h3>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="card__background" style="background-image: url(https://static.vecteezy.com/system/resources/previews/016/763/998/non_2x/sample-text-button-sample-sign-icon-label-sticker-web-buttons-vector.jpg)"></div>
+        <div class="card__content">
+          <p class="card__category">Particulate Matters</p>
+          <h3 class="card__heading">PM(10)</h3>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="card__background" style="background-image: url(https://static.vecteezy.com/system/resources/previews/016/763/998/non_2x/sample-text-button-sample-sign-icon-label-sticker-web-buttons-vector.jpg)"></div>
+        <div class="card__content">
+          <p class="card__category">Carbon Monoxide</p>
+          <h3 class="card__heading">CO</h3>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="card__background" style="background-image: url(https://static.vecteezy.com/system/resources/previews/016/763/998/non_2x/sample-text-button-sample-sign-icon-label-sticker-web-buttons-vector.jpg)"></div>
+        <div class="card__content">
+          <p class="card__category">Sulphur Dioxide</p>
+          <h3 class="card__heading">SO2</h3>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="card__background" style="background-image: url(https://static.vecteezy.com/system/resources/previews/016/763/998/non_2x/sample-text-button-sample-sign-icon-label-sticker-web-buttons-vector.jpg)"></div>
+        <div class="card__content">
+          <p class="card__category">Nitrogen Dioxide</p>
+          <h3 class="card__heading">NO2</h3>
+        </div>
+      </a>
+      <a class="card" href="#">
+        <div class="card__background" style="background-image: url(https://static.vecteezy.com/system/resources/previews/016/763/998/non_2x/sample-text-button-sample-sign-icon-label-sticker-web-buttons-vector.jpg)"></div>
+        <div class="card__content">
+          <p class="card__category">Ozone</p>
+          <h3 class="card__heading">O3</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+
+    <script>
+        // Function to get AQI data from Open Meteo API
+        function getAQI(latitude, longitude) {
+    // Use the correct API endpoint for air quality data
+    const apiUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${latitude}&longitude=${longitude}&current=us_aqi&timezone=auto`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log("API Response:", data); // Log the entire API response
+
+            // Check if the air quality data exists
+            if (!data.current || !data.current.us_aqi) {
+                throw new Error("Air quality data not available");
+            }
+
+            // Get the current AQI value
+            const aqi = data.current.us_aqi;
+
+            let aqiStatus = '';
+            if (aqi <= 50) {
+                aqiStatus = 'Good';
+            } else if (aqi <= 100) {
+                aqiStatus = 'Moderate';
+            } else if (aqi <= 150) {
+                aqiStatus = 'Unhealthy for Sensitive Groups';
+            } else if (aqi <= 200) {
+                aqiStatus = 'Unhealthy';
+            } else if (aqi <= 300) {
+                aqiStatus = 'Very Unhealthy';
+            } else {
+                aqiStatus = 'Hazardous';
+            }
+
+            // Display AQI on the page
+            document.getElementById('aqiValue').innerText = aqi;
+            document.getElementById('aqiStatus').innerText = aqiStatus;
+            document.getElementById('aqiMarker').style.width = `${(aqi / 300) * 100}%`; // Scale the marker based on AQI
+        })
+        .catch(error => {
+            console.error('Error fetching AQI data:', error);
+            alert("Error fetching AQI data. Please try again later.");
+        });
+}
+
+        // Function to get user's current location
+        function locateUser() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Fetch and display the AQI for the user's location
+                    getAQI(latitude, longitude);
+                }, function(error) {
+                    console.error('Error retrieving location:', error);
+                    alert('Unable to retrieve location.');
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Add event listener to the Locate Me button
+        document.getElementById('locateBtn').addEventListener('click', locateUser);
+    </script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
